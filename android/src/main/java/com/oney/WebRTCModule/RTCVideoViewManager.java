@@ -27,6 +27,11 @@ public class RTCVideoViewManager extends SimpleViewManager<WebRTCView> {
     return view;
   }
 
+  @ReactProp(name = "is360")
+  public void setIs360(WebRTCView view, boolean is360) {
+    view.setIs360(is360);
+  }
+
   /**
    * Sets the indicator which determines whether a specific {@link WebRTCView}
    * is to mirror the video specified by {@code streamURL} during its rendering.

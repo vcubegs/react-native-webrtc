@@ -91,6 +91,8 @@ public class WebRTCView extends ViewGroup {
      */
     private final Object layoutSyncRoot = new Object();
 
+    private boolean is360;
+
     /**
      * The indicator which determines whether this {@code WebRTCView} is to
      * mirror the video represented by {@link #videoTrack} during its rendering.
@@ -161,6 +163,7 @@ public class WebRTCView extends ViewGroup {
         surfaceViewRenderer = new SurfaceViewRenderer(context);
         addView(surfaceViewRenderer);
 
+        setIs360(false);
         setMirror(false);
         setScalingType(DEFAULT_SCALING_TYPE);
     }
@@ -374,6 +377,10 @@ public class WebRTCView extends ViewGroup {
                     /* changed */ false,
                     getLeft(), getTop(), getRight(), getBottom());
         }
+    }
+
+    public void setIs360(boolean is360) {
+        this.is360 = is360;
     }
 
     /**

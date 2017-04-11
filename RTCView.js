@@ -13,6 +13,8 @@ const RTCView = {
   name: 'RTCVideoView',
   propTypes: {
 
+    is360: PropTypes.bool,
+
     /**
      * Indicates whether the video specified by {@link #streamURL} should be
      * mirrored during rendering. Commonly, applications choose to mirror the
