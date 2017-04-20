@@ -14,6 +14,7 @@ const RTCView = {
   propTypes: {
 
     is360: PropTypes.bool,
+    dir360: PropTypes.array,
 
     /**
      * Indicates whether the video specified by {@link #streamURL} should be

@@ -14,8 +14,13 @@ android {
         }
     }
 }
-
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
 dependencies {
+    compile 'com.github.ashqal:MD360Player4Android:2.1.0'
     compile 'com.facebook.react:react-native:+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }

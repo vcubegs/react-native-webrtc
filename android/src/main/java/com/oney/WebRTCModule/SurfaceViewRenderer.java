@@ -123,6 +123,8 @@ public class SurfaceViewRenderer extends SurfaceView
       makeBlack();
     }
   };
+  // 360 video renderer
+  private Gl360Drawer gl360Drawer = null;
 
   /**
    * Standard View constructor. In order to render something, you must first call init().
@@ -145,10 +147,15 @@ public class SurfaceViewRenderer extends SurfaceView
    * reinitialize the renderer after a previous init()/release() cycle.
    */
   public void init(
-      EglBase.Context sharedContext, RendererCommon.RendererEvents rendererEvents) {
-    init(sharedContext, rendererEvents, EglBase.CONFIG_PLAIN, new GlRectDrawer());
+      EglBase.Context sharedContext, RendererCommon.RendererEvents rendererEvents, boolean is360) {
+    if (is360) gl360Drawer = new Gl360Drawer(this);
+    init(sharedContext, rendererEvents, EglBase.CONFIG_PLAIN, is360 ? gl360Drawer : new GlRectDrawer());
   }
 
+  public boolean setDir360(double[] dir) {
+    if(gl360Drawer == null) return false;
+    return gl360Drawer.setDir360(dir);
+  }
   /**
    * Initialize this class, sharing resources with |sharedContext|. The custom |drawer| will be used
    * for drawing frames on the EGLSurface. This class is responsible for calling release() on

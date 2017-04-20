@@ -383,6 +383,9 @@ public class WebRTCView extends ViewGroup {
         this.is360 = is360;
     }
 
+    public void setDir360(double[] dir) {
+        surfaceViewRenderer.setDir360(dir);
+    }
     /**
      * Sets the indicator which determines whether this {@code WebRTCView} is to
      * mirror the video represented by {@link #videoTrack} during its rendering.
@@ -560,7 +563,7 @@ public class WebRTCView extends ViewGroup {
             // EglBase implementation to utilize.
             EglBase.Context sharedContext = eglBase.getEglBaseContext();
 
-            surfaceViewRenderer.init(sharedContext, rendererEvents);
+            surfaceViewRenderer.init(sharedContext, rendererEvents, is360);
 
             videoRenderer = new VideoRenderer(surfaceViewRenderer);
             videoTrack.addRenderer(videoRenderer);

@@ -1,5 +1,6 @@
 package com.oney.WebRTCModule;
 
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -32,6 +33,10 @@ public class RTCVideoViewManager extends SimpleViewManager<WebRTCView> {
     view.setIs360(is360);
   }
 
+  @ReactProp(name = "dir360")
+  public void setDir360(WebRTCView view, ReadableArray dir360) {
+    view.setDir360(new double[]{dir360.getDouble(0), dir360.getDouble(1), dir360.getDouble(2)});
+  }
   /**
    * Sets the indicator which determines whether a specific {@link WebRTCView}
    * is to mirror the video specified by {@code streamURL} during its rendering.
